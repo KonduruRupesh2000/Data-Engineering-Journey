@@ -1,4 +1,4 @@
-# Hive Day01
+# Hive Tables
 
 
 
