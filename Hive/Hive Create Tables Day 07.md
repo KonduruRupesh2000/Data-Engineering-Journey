@@ -1,7 +1,5 @@
 # Hive Usecase - Create tables
 
-**Sunday, April 14, 2024**  
-*12:19 AM*
 
 This page focuses on the creation of Hive Internal and External Tables and understanding the concepts which we learned about tables in previous articles.
 
