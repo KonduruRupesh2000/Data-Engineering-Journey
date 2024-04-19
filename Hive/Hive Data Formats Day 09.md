@@ -1,8 +1,5 @@
 # Hive Data Formats
 
-Wednesday, April 17, 2024  
-12:48 PM
-
 File formats in general we have are:  
 1. Parquet  
 2. ORC  
