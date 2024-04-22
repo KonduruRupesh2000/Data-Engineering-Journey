@@ -132,3 +132,31 @@ SET mapreduce.job.reduces=2;
 CREATE TABLE sales_order_grouped_orc_v2 STORED AS ORC AS 
 SELECT year_id, SUM(sales) AS total_sales FROM sales_order_data_orc GROUP BY year_id;
 ```
+
+### Difference between Sort By and Order By in Hive
+Hive sort by and order by commands are used to fetch data in sorted order. The main differences between sort by and order by commands are given below.
+
+Sort by
+
+```sql
+SELECT E.EMP_ID FROM Employee E SORT BY E.empid;
+```
+
+- May use multiple reducers for the final output.
+- Only guarantees ordering of rows within a reducer.
+- May give partially ordered result.
+Performance: Because it forces data through a single reducer, ORDER BY can be very slow and inefficient for large amounts of data.
+Scalability: As data grows, the single reducer will take longer to process all the data, limiting scalability.
+Resource Utilization: It may not utilize the cluster resources effectively as it does not parallelize the sorting process.
+
+## OrderBy
+
+```sql
+SELECT E.EMP_ID FROM Employee E ORDER BY E.empid;
+```
+
+- Uses a single reducer to guarantee total order in output.
+- LIMIT can be used to minimize sort time.
+- Partial Ordering: With SORT BY, the total ordering of the output is not guaranteed. If you need a globally ordered list, SORT BY won't suffice.
+- Redundancy: Sometimes SORT BY may not be useful if a subsequent operation like JOIN does not preserve the sorted order, potentially requiring another sort operation.
+- Less Intuitive: For those accustomed to SQL from traditional RDBMS, the behavior of SORT BY not providing a total sort can be less intuitive and lead to misunderstandings about the output.
