@@ -42,3 +42,43 @@
 
 ### Data Model:
 1. **RDMS**: (Row and column)
+
+```
+Name Gender
+rupesh M
+ram M
+```
+
+2. **Hive**: (Table with partitions)
+
+```
+Partition1     Partition2   Partition3
+Bucket1 B2 B3   B1 B2  B3    B1 B2 B3
+```
+
+3. **Column-oriented Database**:
+
+```
+Personal Details Office Details
+Name Gender       EmpId Email
+ram M               1 alfja@
+rupesh M            2 afjajl@
+```
+
+
+**Are RDMS and Hbase the same?** No. In RDMS, to fetch the value at the 4th row and 5th position, you need to scan each row to get there. In Hbase, you can check only the column you need to return.
+
+### HDFS vs HBASE:
+- **HDFS**: File system; Write once, read many times; Access: MapReduce, Hive, Pig; Storage with HDFS and processed with Map Reduce.
+- **HBASE**: Database; Random read/write; Extract data: API, Server, RestAPI; Storage and processes are performed with HBASE commands.
+
+### Hive:
+- OLAP
+- SQL(HQL)
+- Rigid Schema
+
+### Principles:
+
+- **ACID** (Followed by RDBMS): Atomicity, Consistency, Isolation, Durability.
+- **CAP** (Followed by NoSQL): Consistency, Availability, Partition.
+- **BASE** (Followed by NoSQL): Basically Available, Soft state, Eventually consistent.
